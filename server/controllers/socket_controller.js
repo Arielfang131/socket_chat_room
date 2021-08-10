@@ -1,9 +1,12 @@
 const { client, getCache, leaveRedis } = require("../models/cache_model");
+// put online members into array
 const nicknames = [];
 
 function socket (io) {
     io.on("connection", (socket) => {
+        // add new user
         socket.on("new user", (data, callback) => {
+            // nickname must be unique
             if (nicknames.indexOf(data) !== -1) {
                 callback(false);
             } else {
@@ -13,6 +16,7 @@ function socket (io) {
                 callback(true);
             }
         });
+
         socket.on("chat message", (data) => {
             io.to(data.room).emit("chat message", { nickname: socket.nickname, msg: data.msg });
         });
@@ -47,7 +51,7 @@ function socket (io) {
             socket.join(roomId);
             io.to(roomId).emit("a new user join the room", socket.nickname);
             let roomInfo = await getCache("all");
-            if (roomInfo === null) { // 給予初始值
+            if (roomInfo === null) { // initialization
                 roomInfo = {};
                 roomInfo[roomId] = {
                     members: [socket.nickname]
@@ -55,6 +59,7 @@ function socket (io) {
                 client.set("all", JSON.stringify(roomInfo));
                 io.emit("room members", roomInfo);
             } else {
+                // the first person join to the rommId
                 const tempRoomInfo = JSON.parse(roomInfo);
                 if (tempRoomInfo[roomId] === undefined) {
                     tempRoomInfo[roomId] = {
@@ -69,6 +74,7 @@ function socket (io) {
                 }
             }
         });
+
         socket.on("leave room", async (roomId) => {
             const nameList = await leaveRedis(roomId, socket.nickname);
             console.log(`${socket.nickname} leave room: ${roomId}`);

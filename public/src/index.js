@@ -63,6 +63,7 @@ socket.on("usernames", function (data) {
     nameList.innerHTML = html;
 });
 
+// receive messages
 socket.on("chat message", function (data) {
     const item = document.createElement("li");
     item.innerHTML = `<b>${data.nickname}:</b> ${data.msg} </br>`;
@@ -118,6 +119,7 @@ socket.on("a user leave the room", function (name) {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
+// update member lists about every room
 socket.on("room members", function (data) {
     if (data.Room1 !== undefined) {
         const room1MembersList = document.getElementById("memberRoom1");
