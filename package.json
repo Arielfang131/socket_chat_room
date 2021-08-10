@@ -1,0 +1,33 @@
+{
+  "name": "socket_chat_room",
+  "version": "1.0.0",
+  "description": "my first socket project",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arielfang131/socket_chat_room.git"
+  },
+  "author": "Ariel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arielfang131/socket_chat_room/issues"
+  },
+  "homepage": "https://github.com/Arielfang131/socket_chat_room#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "redis": "^3.1.2",
+    "socket.io": "^4.1.3"
+  }
+}

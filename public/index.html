@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link href="./styles/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+      <div id="title">Chat Room</div>
+    </div>
+    <div id="nickWrap">
+      <div>Please Enter a username</div>
+      <div id="nickError"></div>
+        <form id="setNick">
+            <input size="35" id="nickName"></input>
+            <button class="button">Send</button>
+        </form>
+    </div>
+    <div id="box">
+      <div id="nameList"></div>
+      <div id="groupList">Join One Group
+        <div class="group">
+            <div>Room 1</div>
+            <div id="memberRoom1">Members:</div>
+            <button class="joinRoom" id="Room1">Join</button>
+            <button class="leaaveRoom" id="Room1">Leave</button>
+        </div>
+        <div class="group" id="Room2">
+          <div>Room 2</div>
+          <div id="memberRoom2">Members:</div>
+          <button class="joinRoom" id="Room2">Join</button>
+          <button class="leaaveRoom" id="Room2">Leave</button>
+        </div>
+        <div class="group" id="Room3">
+          <div>Room 3</div>
+          <div id="memberRoom3">Members:</div>
+          <button class="joinRoom" id="Room3">Join</button>
+          <button class="leaaveRoom" id="Room3">Leave</button>
+        </div>
+      </div>
+      <div id="chatRoom">
+        <div id="messages"></div>
+          <form id="form" action="">
+            <input id="input" autocomplete="off" />
+            <button class="button">Send</button>
+          </form>
+      </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./src/index.js" type="module" ></script>
+  </body>
+</html>
