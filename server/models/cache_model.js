@@ -1,7 +1,6 @@
 require("dotenv").config();
 const redis = require("redis");
 const { REDISPORT } = process.env || 6379; // redis port setting
-// console.log(REDISPORT);
 const { REDISHOST } = process.env;
 const client = redis.createClient(REDISPORT, REDISHOST); // create redis client
 
@@ -17,7 +16,7 @@ function getCache (key) { // used in async function
 async function leaveRedis (roomId, nickname) {
     const roomInfo = await getCache("all");
     const membersData = JSON.parse(roomInfo);
-    membersData[roomId].members.splice(membersData[roomId].members.indexOf(nickname), 1);
+    membersData[roomId].members.splice(membersData[roomId].members.indexOf(nickname), 1); // remove nickname from mimbers
     client.set("all", JSON.stringify(membersData));
     return membersData;
 };

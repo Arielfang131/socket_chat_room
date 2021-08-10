@@ -35,7 +35,6 @@ function socket (io) {
                 const newList = await leaveRedis(chatRoomName, socket.nickname);
                 socket.leave(chatRoomName);
                 io.emit("room members", newList);
-                // socket.to(chatRoomName).emit("user left");
                 io.to(chatRoomName).emit("a user leave the room", socket.nickname);
             }
             const onlineList = await leaveRedis("lobby", socket.nickname);
@@ -76,17 +75,9 @@ function socket (io) {
             socket.leave(roomId);
             io.emit("room members", nameList);
             io.to(roomId).emit("a user leave the room", socket.nickname);
-            // socket.join("lobby");
-            // const memberInfo = JSON.parse(await getCache("all"));
-            // console.log("+++++++++++++");
-            // console.log(memberInfo.lobby);
-            // memberInfo.lobby.members.push(socket.nickname);
-            // client.set("all", JSON.stringify(memberInfo));
-            // io.to("lobby").emit("a new user join the room", socket.nickname);
         });
 
         socket.on("join lobby", () => {
-            // redis update HERE!!!
             socket.join("lobby");
         });
     });
