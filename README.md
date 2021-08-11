@@ -2,9 +2,9 @@
 
 ### 使用node.js、socket.io和Redis打造的聊天室，讓使用者間可以互相聊天，還可觀看目前的聊天室成員，來選擇想加入的聊天室，在線名單和聊天室成員名單皆是即時更新
 
-### Website Link 3.140.248.5
+### Website Link: http://3.140.248.5/
 
-### 功能介紹
+### 功能介紹:
 
 Index首頁-請先輸入使用者暱稱
 ![index](https://user-images.githubusercontent.com/75560708/128887968-98d7e7c4-e5bc-482b-bcdb-afcec602f722.png)
